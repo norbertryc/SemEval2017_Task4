@@ -8,7 +8,8 @@ def LSTMmodel(hidden_state_dim, embeddings, vocabulary_dim, emb_dim, maxlen, inp
     model = Sequential()
     model.add(Embedding(vocabulary_dim,
                         emb_dim,
-                        input_length=maxlen))
+                        input_length=maxlen,
+			weights=[embeddings]))
     
     if input_dropout_rate:
         model.add(Dropout(input_dropout_rate))
@@ -32,7 +33,8 @@ def BidirectionalLSTMmodel(hidden_state_dim, embeddings, vocabulary_dim, emb_dim
     model = Sequential()
     model.add(Embedding(vocabulary_dim,
                         emb_dim,
-                        input_length=maxlen))
+                        input_length=maxlen,
+			weights=[embeddings]))
     
     if input_dropout_rate:
         model.add(Dropout(input_dropout_rate))
